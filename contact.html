@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact for Sales</title>
+    <link rel="stylesheet" type="text/css" href="sample.css">
+</head>
+<body>
+    <header>
+        <h1>Contact for Sales</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="home.html" target="right">Home</a></li>
+            <li><a href="login1.html" target="right">Login</a></li>
+            <li><a href="about.html" target="right">About Us</a></li>
+            <li><a href="contact.html" target="right">Contact</a></li>
+        </ul>
+    </nav>
+    
+    
+    <div class="input-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div class="input-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div class="input-group">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
+    </div>
+    <div class="input-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+    </div>
+    <input type="submit" value="Submit">
+
+    <script src="validate.js"></script>
+    
+</body>
+</html>
