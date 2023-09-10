@@ -21,7 +21,7 @@
             </ul>
         </nav>
         
-    
+        <form>
         <div class="input-group">
             <label for="teamname">Team Name:</label>
             <input type="text" id="teamname" name="teamname" required>
@@ -39,8 +39,37 @@
             <textarea id="description" name="description" required></textarea>
         </div>
         <input type="submit" value="Submit">
-
-        <script src="validate.js"></script>
+        </form>
+        <script>
+            function validateForm() {
+                var teamname = document.getElementById("teamname").value;
+                var founder = document.getElementById("founder").value;
+                var location = document.getElementById("location").value;
+                var description = document.getElementById("description").value;
+    
+                if (teamname.trim() === "") {
+                    alert("Please enter a Team Name");
+                    return false;
+                }
+    
+                if (founder.trim() === "") {
+                    alert("Please enter a Founder");
+                    return false;
+                }
+    
+                if (location.trim() === "") {
+                    alert("Please enter a Location");
+                    return false;
+                }
+    
+                if (description.trim() === "") {
+                    alert("Please enter a Description");
+                    return false;
+                }
+    
+                return true;
+            }
+        </script>
 
  </body>
 </html>
