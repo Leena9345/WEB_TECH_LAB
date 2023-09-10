@@ -18,7 +18,7 @@
         </ul>
     </nav>
     
-    
+    <form>
     <div class="input-group">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
@@ -36,8 +36,50 @@
         <textarea id="message" name="message" required></textarea>
     </div>
     <input type="submit" value="Submit">
+    </form>
+    <script>
+    function validateForm() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var phone = document.getElementById("phone").value;
+        var message = document.getElementById("message").value;
 
-    <script src="validate.js"></script>
+        if (name.trim() === "") {
+            alert("Please enter your Name");
+            return false;
+        }
+
+        if (email.trim() === "" || !validateEmail(email)) {
+            alert("Please enter a valid Email");
+            return false;
+        }
+
+        if (phone.trim() === "" || !validatePhone(phone)) {
+            alert("Please enter a valid Phone number (10 digits)");
+            return false;
+        }
+
+        if (message.trim() === "") {
+            alert("Please enter a Message");
+            return false;
+        }
+
+        return true;
+    }
+
+    // Email validation using a regular expression
+    function validateEmail(email) {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+
+    // Phone number validation (10 digits)
+    function validatePhone(phone) {
+        var re = /^[0-9]{10}$/;
+        return re.test(phone);
+    }
+</script>
+    
     
 </body>
 </html>
