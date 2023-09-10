@@ -18,6 +18,32 @@
             
             <input type="submit" value="Login">
         </form>
+        <script>
+            function validateForm() {
+                // Get form input values
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                var errorMessages = document.getElementById("errorMessages");
+    
+                // Reset error messages
+                errorMessages.innerHTML = "";
+    
+                // Validate username (you can add more checks as needed)
+                if (username.length < 3) {
+                    errorMessages.innerHTML += "Username must be at least 3 characters long.<br>";
+                    return false; // Prevent form submission
+                }
+    
+                // Validate password (you can add more checks as needed)
+                if (password.length < 6) {
+                    errorMessages.innerHTML += "Password must be at least 6 characters long.<br>";
+                    return false; // Prevent form submission
+                }
+    
+                // If everything is valid, allow form submission
+                return true;
+            }
+        </script>
     </body>
 </head>
 </html>
