@@ -1,0 +1,344 @@
+INDEX.HTML:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Session Management Example</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Session Management Example</h1>
+        <div class="button-container">
+            <form action="/MyServlets/SessionServlet" method="GET">
+                <button type="submit" class="create-session-button">Create Session</button>
+            </form>
+            <form action="/MyServlets/SessionDataServlet" method="GET">
+                <button type="submit" class="access-data-button">Access Session Data</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+
+STYLE.CSS:
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px;
+}
+
+
+h1 {
+    color: #333;
+}
+
+
+.button-container {
+    margin-top: 20px;
+}
+
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+
+button.create-session-button {
+    background-color: #28a745;
+}
+
+
+button.access-data-button {
+    background-color: #17a2b8;
+}
+
+
+INDEX.HTML:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Session Management Example</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Session Management Example</h1>
+    <form action="/SessionServlet" method="post">
+        <input type="hidden" name="sessionId" value="12345">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+
+WEB.XML:
+
+web-app>
+    <servlet>
+        <servlet-name>SessionServlet</servlet-name>
+        <servlet-class>SessionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionServlet</servlet-name>
+        <url-pattern>/SessionServlet</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>
+
+
+STYLE.CSS:
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+
+h1 {
+    color: #333;
+}
+
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    margin: 0 auto;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+WELCOME.JSP:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome Page</title>
+</head>
+<body>
+    <h1>Welcome to the Session Management Example</h1>
+    <%
+        // Access session attributes set in SessionServlet
+        String sessionId = (String) session.getAttribute("sessionId");
+        String username = (String) session.getAttribute("username");
+    %>
+    <p>Your Session ID: <%= sessionId %></p>
+    <p>Hello, <%= username %>!</p>
+</body>
+</html>
+
+
+STYLE.CSS:
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+
+form {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    display: inline-block;
+}
+
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+INDEX.HTML
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Welcome to My Web App</h1>
+    <form action="LoginServlet" method="post">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+        <br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
+
+
+LOGIN.JSP:
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Result</title>
+</head>
+<body>
+    <%
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+
+        if (username != null && password != null && username.equals("user") && password.equals("password")) {
+    %>
+            <h1>Login Successful</h1>
+            <p>Welcome, <%= username %>!</p>
+    <%
+        } else {
+    %>
+            <h1>Login Failed</h1>
+            <p>Invalid username or password.</p>
+    <%
+        }
+    %>
+</body>
+</html>
+
+
+
+INDEX.HTML:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <form action="LoginServlet" method="post">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required><br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
+
+
+
+
+STYLE.CSS:
+
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+
+form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+}
+
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+
+
+
+
+
+
+
+LOGIN.JSP:
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Result</title>
+</head>
+<body>
+    <%
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+
+        if (username != null && password != null && username.equals("user") && password.equals("password")) {
+    %>
+            <h1>Login Successful</h1>
+            <p>Welcome, <%= username %>!</p>
+    <%
+        } else {
+    %>
+            <h1>Login Failed</h1>
+            <p>Invalid username or password.</p>
+    <%
+        }
+    %>
+</body>
+</html>
